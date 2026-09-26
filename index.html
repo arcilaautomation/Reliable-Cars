@@ -1,0 +1,905 @@
+<title>Reliable Cars 2015–2025</title>
+<meta name="description" content="Which 2015–2025 used sedans, SUVs and pickups hold up, by model year and engine, for US buyers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+:root {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --surface-2: #eaeef2;
+  --ink: #15202a;
+  --ink-2: #4f5c68;
+  --ink-3: #6f7b86;
+  --line: #d6dde4;
+  --line-strong: #b9c3cc;
+  --accent: #13607a;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcecf1;
+  --good: #1b7542;
+  --good-bg: #e2f2e8;
+  --warn: #9a6300;
+  --warn-bg: #fbefd6;
+  --bad: #b0271f;
+  --bad-bg: #fbe4e2;
+  --focus: #1c7fa0;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f151b;
+    --surface: #161e26;
+    --surface-2: #1d2731;
+    --ink: #e5ebf0;
+    --ink-2: #a8b4bf;
+    --ink-3: #8794a0;
+    --line: #2a3541;
+    --line-strong: #3a4754;
+    --accent: #62b6cf;
+    --accent-ink: #0c1a20;
+    --accent-soft: #173039;
+    --good: #62c790;
+    --good-bg: #16301f;
+    --warn: #e6b04e;
+    --warn-bg: #362a12;
+    --bad: #f28a82;
+    --bad-bg: #3a1a17;
+    --focus: #7fcde3;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f151b;
+  --surface: #161e26;
+  --surface-2: #1d2731;
+  --ink: #e5ebf0;
+  --ink-2: #a8b4bf;
+  --ink-3: #8794a0;
+  --line: #2a3541;
+  --line-strong: #3a4754;
+  --accent: #62b6cf;
+  --accent-ink: #0c1a20;
+  --accent-soft: #173039;
+  --good: #62c790;
+  --good-bg: #16301f;
+  --warn: #e6b04e;
+  --warn-bg: #362a12;
+  --bad: #f28a82;
+  --bad-bg: #3a1a17;
+  --focus: #7fcde3;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+  margin: 0;
+}
+h2 { font-size: 2.1rem; }
+h3 { font-size: 1.35rem; font-weight: 600; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Header ---------- */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.masthead .wrap {
+  padding-block: 40px 32px;
+  display: grid;
+  gap: 18px;
+}
+.masthead h1 {
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.masthead h1 .yrs { color: var(--accent); }
+.lede {
+  max-width: 68ch;
+  font-size: 1.08rem;
+  color: var(--ink);
+}
+.scope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+}
+.scope span { display: inline-flex; gap: 6px; align-items: baseline; }
+.scope b { font-weight: 600; color: var(--ink); }
+
+nav.toc {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+nav.toc .wrap {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding-block: 8px;
+  scrollbar-width: none;
+}
+nav.toc a {
+  flex: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+nav.toc a:hover { background: var(--surface-2); color: var(--ink); }
+
+section.block { padding-block: 48px 8px; }
+section.block > .wrap { display: grid; gap: 20px; }
+.section-head { display: grid; gap: 8px; max-width: 72ch; }
+.section-head p { color: var(--ink-2); }
+
+/* ---------- Verdict marks (multipoint-inspection style) ---------- */
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mark i {
+  width: 14px; height: 14px;
+  border-radius: 3px;
+  border: 2px solid currentColor;
+  flex: none;
+  position: relative;
+}
+.mark.top { color: var(--good); }
+.mark.top i { background: currentColor; }
+.mark.top i::after, .mark.strong i::after {
+  content: "";
+  position: absolute;
+  left: 3px; top: 0px;
+  width: 4px; height: 7px;
+  border: solid var(--surface);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.mark.strong { color: var(--good); }
+.mark.strong i::after { border-color: currentColor; }
+.mark.mixed { color: var(--warn); }
+.mark.mixed i { background: var(--warn-bg); }
+.mark.mixed i::after {
+  content: ""; position: absolute; left: 1px; right: 1px; top: 4px; height: 2px; background: currentColor;
+}
+.mark.avoid { color: var(--bad); }
+.mark.avoid i { background: currentColor; }
+.mark.avoid i::before, .mark.avoid i::after {
+  content: ""; position: absolute; left: 4px; top: 0; width: 2px; height: 10px; background: var(--surface);
+}
+.mark.avoid i::before { transform: rotate(45deg); }
+.mark.avoid i::after { transform: rotate(-45deg); }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding: 12px 14px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.legend > div { display: flex; gap: 8px; align-items: baseline; }
+
+.grade {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 3px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  vertical-align: 1px;
+  text-decoration: none;
+}
+.grade.gA { border-color: var(--good); color: var(--good); }
+.grade.gB { border-color: var(--accent); color: var(--accent); }
+.grade.gC { border-color: var(--warn); color: var(--warn); }
+.grade.gD { border-color: var(--bad); color: var(--bad); }
+a.grade:hover { background: var(--surface-2); }
+
+/* ---------- Bottom line ---------- */
+.bottomline {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px;
+  display: grid;
+  gap: 14px;
+}
+.bottomline p { max-width: 75ch; }
+.bottomline ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 80ch; }
+
+.picks {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.pickcol {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.pickcol header {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.pickcol header h3 { font-size: 1.5rem; text-transform: uppercase; }
+.pickcol ol { list-style: none; margin: 0; padding: 0; counter-reset: pick; }
+.pickcol li {
+  counter-increment: pick;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 2px 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.pickcol li:last-child { border-bottom: 0; }
+.pickcol li::before {
+  content: counter(pick);
+  grid-row: span 3;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+}
+.pk-name { font-weight: 700; }
+.pk-spec { font-family: var(--mono); font-size: 0.8rem; color: var(--ink); }
+.pk-why { font-size: 0.86rem; color: var(--ink-2); }
+
+/* ---------- Avoid list ---------- */
+.avoidlist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 6px 18px;
+}
+.avoidlist > div {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 2px 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.avoidlist .mark { grid-row: span 2; padding-top: 3px; }
+.av-name { font-weight: 700; }
+.av-name .yrs { font-family: var(--mono); font-weight: 500; font-size: 0.82rem; margin-left: 4px; color: var(--bad); }
+.av-why { font-size: 0.87rem; color: var(--ink-2); }
+
+/* ---------- Model index ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.chip:hover { color: var(--ink); border-color: var(--ink-3); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.search {
+  flex: 1 1 220px;
+  max-width: 340px;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+}
+.count { font-size: 0.84rem; color: var(--ink-3); }
+
+.index {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.index-head, .row-btn {
+  display: grid;
+  grid-template-columns: minmax(170px, 1.3fr) 150px minmax(0, 1.4fr) minmax(0, 1.4fr) 22px;
+  gap: 14px;
+  align-items: start;
+  padding: 12px 16px;
+}
+.index-head {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--surface-2);
+}
+.row { border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row-btn {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.row-btn:hover { background: var(--surface-2); }
+.rb-name { font-weight: 700; }
+.rb-class { display: block; font-size: 0.78rem; font-weight: 400; color: var(--ink-3); }
+.rb-buy, .rb-skip { font-size: 0.87rem; }
+.rb-skip { color: var(--ink-2); }
+.rb-caret {
+  width: 10px; height: 10px; margin-top: 6px;
+  border-right: 2px solid var(--ink-3);
+  border-bottom: 2px solid var(--ink-3);
+  transform: rotate(45deg);
+  transition: transform .15s ease;
+}
+.row-btn[aria-expanded="true"] .rb-caret { transform: rotate(225deg); margin-top: 10px; }
+.lbl-m { display: none; }
+
+.detail {
+  padding: 4px 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 28px;
+  border-top: 1px dashed var(--line);
+  background: color-mix(in srgb, var(--surface-2) 45%, var(--surface));
+}
+.detail .full { grid-column: 1 / -1; }
+.detail h4 {
+  margin: 14px 0 6px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.detail ul { margin: 0; padding-left: 1.1em; display: grid; gap: 5px; font-size: 0.9rem; }
+.detail p { font-size: 0.92rem; max-width: 80ch; }
+.gens { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-2); }
+.recall-id { font-family: var(--mono); font-size: 0.8rem; font-weight: 500; }
+.checks { list-style: none; padding-left: 0 !important; }
+.checks li { position: relative; padding-left: 24px; }
+.checks li::before {
+  content: "";
+  position: absolute; left: 0; top: 4px;
+  width: 12px; height: 12px;
+  border: 1.5px solid var(--ink-3);
+  border-radius: 2px;
+}
+.empty { padding: 28px 16px; color: var(--ink-2); }
+
+/* ---------- Tables ---------- */
+.tablewrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: var(--surface-2);
+  white-space: nowrap;
+}
+tr:last-child td { border-bottom: 0; }
+td.nm { font-weight: 600; min-width: 170px; }
+td.yr { font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; }
+table.defects td { min-width: 150px; }
+table.defects td.nm { min-width: 190px; }
+
+/* ---------- Surveys ---------- */
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+.panel p, .panel li { font-size: 0.9rem; }
+.panel ul, .panel ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.bars { display: grid; gap: 6px; }
+.bar {
+  display: grid;
+  grid-template-columns: 96px 1fr 40px;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.84rem;
+}
+.bar .track { height: 12px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--accent); border-radius: 3px 0 0 3px; }
+.bar .fill.hi { background: var(--bad); opacity: .8; }
+.bar .v { font-family: var(--mono); font-size: 0.78rem; text-align: right; }
+.note { font-size: 0.82rem; color: var(--ink-3); }
+
+/* ---------- Checklist ---------- */
+.checkgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.checkgrid .panel h3 { font-size: 1.2rem; }
+
+/* ---------- Method ---------- */
+.gradescale { display: grid; gap: 8px; }
+.gradescale > div { display: grid; grid-template-columns: 28px 1fr; gap: 10px; font-size: 0.88rem; }
+details.more {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+details.more summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+}
+details.more > div { padding: 0 18px 18px; display: grid; gap: 10px; }
+details.more ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 0.88rem; }
+.srclist { columns: 2; column-gap: 28px; }
+.srclist li { break-inside: avoid; margin-bottom: 6px; font-size: 0.84rem; }
+
+footer.foot { padding-block: 40px 56px; color: var(--ink-3); font-size: 0.84rem; }
+footer.foot .wrap { display: grid; gap: 6px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .picks, .checkgrid { grid-template-columns: 1fr; }
+  .two { grid-template-columns: 1fr; }
+  .avoidlist { grid-template-columns: 1fr; }
+  .srclist { columns: 1; }
+}
+@media (max-width: 760px) {
+  .index-head { display: none; }
+  .row-btn {
+    grid-template-columns: 1fr auto 18px;
+    gap: 6px 12px;
+  }
+  .rb-name { grid-column: 1; }
+  .rb-verdict { grid-column: 2; grid-row: 1; }
+  .rb-caret { grid-column: 3; grid-row: 1; }
+  .rb-buy, .rb-skip { grid-column: 1 / -1; }
+  .lbl-m {
+    display: inline;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-right: 6px;
+  }
+  .detail { grid-template-columns: 1fr; }
+  h2 { font-size: 1.8rem; }
+  section.block { padding-block: 36px 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">US used-car buyer's report · Model years 2015–2025 · Researched <span id="asof"></span></div>
+    <h1>Reliable Cars <span class="yrs">2015–2025</span></h1>
+    <p class="lede" id="lede"></p>
+    <div class="scope">
+      <span><b>Market</b> United States</span>
+      <span><b>Segments</b> Sedans &amp; compacts · SUVs &amp; crossovers · Pickups</span>
+      <span><b>Out of scope</b> Hybrids &amp; EVs as a category</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#bottom-line">Bottom line</a>
+    <a href="#top-picks">Top picks</a>
+    <a href="#avoid">Skip these</a>
+    <a href="#models">Every model</a>
+    <a href="#defects">Known defects</a>
+    <a href="#surveys">Survey data</a>
+    <a href="#inspect">Before you buy</a>
+    <a href="#method">How this was rated</a>
+  </div>
+</nav>
+
+<main>
+  <section class="block" id="bottom-line">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Bottom line</div>
+        <h2>Buy the year and the engine, not the badge</h2>
+      </div>
+      <div class="bottomline" id="bottomline"></div>
+    </div>
+  </section>
+
+  <section class="block" id="top-picks">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Top picks, ranked within each segment</div>
+        <h2>The safest bets</h2>
+        <p>Ranked by the strength of the evidence that the named years and engine hold up. Each pick names the exact years and powertrain the evidence covers. Other years of the same model may not qualify.</p>
+      </div>
+      <div class="picks" id="picks"></div>
+    </div>
+  </section>
+
+  <section class="block" id="avoid">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Specific years and engines</div>
+        <h2>Skip these</h2>
+        <p>Each entry has a documented failure pattern: a recall, a warranty extension, a settlement, or consistent survey data. Many of these models are fine in other years.</p>
+      </div>
+      <div class="avoidlist" id="avoidlist"></div>
+    </div>
+  </section>
+
+  <section class="block" id="models">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Model index</div>
+        <h2>Every model checked</h2>
+        <p>Open a row to see its generations, failure points, major recalls, the evidence behind the rating, and what to inspect before buying.</p>
+      </div>
+      <div class="legend" id="legend"></div>
+      <div class="filters">
+        <div class="chips" role="group" aria-label="Segment" id="segchips"></div>
+        <div class="chips" role="group" aria-label="Rating" id="verchips"></div>
+        <input class="search" id="q" type="search" placeholder="Search a model, engine, or year" aria-label="Search models">
+        <span class="count num" id="count" aria-live="polite"></span>
+      </div>
+      <div class="index" id="index">
+        <div class="index-head" aria-hidden="true">
+          <span>Model</span><span>Rating</span><span>Buy</span><span>Avoid or be careful</span><span></span>
+        </div>
+        <div id="rows"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="defects">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Defects that cross model lines</div>
+        <h2>Known defects to check by VIN</h2>
+        <p>These problems hit several models at once. For each one, check the VIN for the recall or warranty extension and ask for proof the repair was done.</p>
+      </div>
+      <div class="tablewrap">
+        <table class="defects">
+          <thead><tr><th>Defect</th><th>Affected</th><th>Years</th><th>Remedy or coverage</th><th>Status, Sept 2026</th><th>Grade</th></tr></thead>
+          <tbody id="defectrows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="surveys">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">What the large datasets say</div>
+        <h2>Survey and longevity data</h2>
+        <p id="surveyintro"></p>
+      </div>
+      <div class="two" id="surveypanels"></div>
+    </div>
+  </section>
+
+  <section class="block" id="inspect">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Pre-purchase checklist</div>
+        <h2>Before you buy</h2>
+        <p>The model rating tells you the odds. The inspection tells you about the one car in front of you. Model-specific checks are in each row of the model index.</p>
+      </div>
+      <div class="checkgrid" id="checkgrid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="method">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Method</div>
+        <h2>How this was rated</h2>
+        <p id="methodintro"></p>
+      </div>
+      <div class="two">
+        <div class="panel">
+          <h3>Evidence grades</h3>
+          <div class="gradescale" id="gradescale"></div>
+        </div>
+        <div class="panel">
+          <h3>Confidence</h3>
+          <div id="confidence"></div>
+        </div>
+      </div>
+      <details class="more">
+        <summary>Where sources disagreed</summary>
+        <div><ul id="contradictions"></ul></div>
+      </details>
+      <details class="more">
+        <summary>Searches run to try to break the top picks</summary>
+        <div><ul id="falsification"></ul></div>
+      </details>
+      <details class="more">
+        <summary>Sources</summary>
+        <div><ul class="srclist" id="sources"></ul></div>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p id="footnote"></p>
+    <p>Not affiliated with any manufacturer, dealer, or survey publisher. Recall status changes: always run the VIN at nhtsa.gov/recalls before you buy.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  var D = window.RC;
+  if (!D) return;
+  var VERDICT = {
+    top: "Top pick",
+    strong: "Strong",
+    mixed: "Mixed: pick years",
+    avoid: "Avoid"
+  };
+  var SEG = { all: "All", sedan: "Sedans", suv: "SUVs", truck: "Trucks" };
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function mark(v) {
+    return '<span class="mark ' + v + '"><i aria-hidden="true"></i>' + VERDICT[v] + "</span>";
+  }
+  function grade(g, u) {
+    if (!g) return "";
+    var cls = "grade g" + g;
+    if (u) return ' <a class="' + cls + '" href="' + esc(u) + '" target="_blank" rel="noopener" title="Evidence grade ' + g + ': open source">' + g + "</a>";
+    return ' <span class="' + cls + '" title="Evidence grade ' + g + '">' + g + "</span>";
+  }
+  function claim(c) {
+    if (typeof c === "string") return esc(c);
+    return esc(c.t) + grade(c.g, c.u);
+  }
+  function $(id) { return document.getElementById(id); }
+
+  $("asof").textContent = D.meta.asof;
+  $("lede").innerHTML = D.meta.lede;
+  $("footnote").innerHTML = D.meta.footnote || "";
+
+  // Bottom line
+  $("bottomline").innerHTML = D.bottom.map(function (b) {
+    if (Array.isArray(b)) return "<ul>" + b.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>";
+    return "<p>" + b + "</p>";
+  }).join("");
+
+  // Picks
+  $("picks").innerHTML = ["sedan", "suv", "truck"].map(function (k) {
+    var col = D.picks[k];
+    return '<div class="pickcol"><header><h3>' + col.title + '</h3><span class="eyebrow">' + col.items.length + ' picks</span></header><ol>' +
+      col.items.map(function (p) {
+        return '<li><span class="pk-name">' + esc(p.name) + '</span><span class="pk-spec">' + esc(p.spec) + '</span><span class="pk-why">' + esc(p.why) + grade(p.g, p.u) + "</span></li>";
+      }).join("") + "</ol></div>";
+  }).join("");
+
+  // Avoid
+  $("avoidlist").innerHTML = D.avoid.map(function (a) {
+    return '<div><span class="mark avoid" aria-label="Avoid"><i aria-hidden="true"></i></span><span class="av-name">' + esc(a.name) + '<span class="yrs">' + esc(a.yrs) + '</span></span><span class="av-why">' + esc(a.why) + grade(a.g, a.u) + "</span></div>";
+  }).join("");
+
+  // Legend
+  $("legend").innerHTML = D.legend.map(function (l) {
+    return "<div>" + mark(l.v) + "<span>" + esc(l.t) + "</span></div>";
+  }).join("");
+
+  // Model index
+  var state = { seg: "all", ver: "all", q: "" };
+  try {
+    var saved = JSON.parse(localStorage.getItem("rc-filters") || "null");
+    if (saved && SEG[saved.seg] && (saved.ver === "all" || VERDICT[saved.ver])) { state.seg = saved.seg; state.ver = saved.ver; }
+  } catch (e) {}
+
+  function chipRow(el, opts, key) {
+    el.innerHTML = Object.keys(opts).map(function (k) {
+      return '<button type="button" class="chip" data-k="' + k + '" aria-pressed="' + (state[key] === k) + '">' + opts[k] + "</button>";
+    }).join("");
+    el.addEventListener("click", function (e) {
+      var b = e.target.closest(".chip");
+      if (!b) return;
+      state[key] = b.getAttribute("data-k");
+      Array.prototype.forEach.call(el.querySelectorAll(".chip"), function (c) {
+        c.setAttribute("aria-pressed", c === b ? "true" : "false");
+      });
+      try { localStorage.setItem("rc-filters", JSON.stringify({ seg: state.seg, ver: state.ver })); } catch (err) {}
+      renderRows();
+    });
+  }
+  var verOpts = { all: "Any rating", top: "Top pick", strong: "Strong", mixed: "Mixed", avoid: "Avoid" };
+  chipRow($("segchips"), SEG, "seg");
+  chipRow($("verchips"), verOpts, "ver");
+
+  var order = { top: 0, strong: 1, mixed: 2, avoid: 3 };
+  var segOrder = { sedan: 0, suv: 1, truck: 2 };
+  var models = D.models.slice().sort(function (a, b) {
+    return (segOrder[a.seg] - segOrder[b.seg]) || (order[a.v] - order[b.v]) || a.name.localeCompare(b.name);
+  });
+
+  function detailHTML(m) {
+    var h = "";
+    if (m.gens) h += '<div class="full"><h4>Generations in range</h4><p class="gens">' + esc(m.gens) + "</p></div>";
+    if (m.summary) h += '<div class="full"><h4>Verdict</h4><p>' + claim(m.summary) + "</p></div>";
+    if (m.faults && m.faults.length) h += "<div><h4>Known failure points</h4><ul>" + m.faults.map(function (f) { return "<li>" + claim(f) + "</li>"; }).join("") + "</ul></div>";
+    if (m.recalls && m.recalls.length) h += "<div><h4>Major recalls</h4><ul>" + m.recalls.map(function (r) { return '<li><span class="recall-id">' + esc(r.id) + "</span> " + claim(r) + "</li>"; }).join("") + "</ul></div>";
+    if (m.evidence && m.evidence.length) h += "<div><h4>Evidence behind the rating</h4><ul>" + m.evidence.map(function (f) { return "<li>" + claim(f) + "</li>"; }).join("") + "</ul></div>";
+    if (m.inspect && m.inspect.length) h += '<div><h4>Inspect before buying</h4><ul class="checks">' + m.inspect.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul></div>";
+    return h;
+  }
+
+  function renderRows() {
+    var q = state.q.trim().toLowerCase();
+    var list = models.filter(function (m) {
+      if (state.seg !== "all" && m.seg !== state.seg) return false;
+      if (state.ver !== "all" && m.v !== state.ver) return false;
+      if (q) {
+        var hay = (m.name + " " + m.cls + " " + m.buy + " " + m.skip + " " + (m.gens || "")).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+    $("count").textContent = list.length + " of " + models.length + " models";
+    if (!list.length) {
+      $("rows").innerHTML = '<div class="empty">No models match. Clear the search or pick another segment or rating.</div>';
+      return;
+    }
+    $("rows").innerHTML = list.map(function (m) {
+      var id = "d-" + m.id;
+      return '<div class="row"><button type="button" class="row-btn" aria-expanded="false" aria-controls="' + id + '">' +
+        '<span class="rb-name">' + esc(m.name) + '<span class="rb-class">' + esc(m.cls) + "</span></span>" +
+        '<span class="rb-verdict">' + mark(m.v) + "</span>" +
+        '<span class="rb-buy"><span class="lbl-m">Buy</span>' + esc(m.buy) + "</span>" +
+        '<span class="rb-skip"><span class="lbl-m">Careful</span>' + esc(m.skip) + "</span>" +
+        '<span class="rb-caret" aria-hidden="true"></span></button>' +
+        '<div class="detail" id="' + id + '" hidden>' + detailHTML(m) + "</div></div>";
+    }).join("");
+  }
+  $("rows").addEventListener("click", function (e) {
+    var b = e.target.closest(".row-btn");
+    if (!b) return;
+    var open = b.getAttribute("aria-expanded") === "true";
+    b.setAttribute("aria-expanded", open ? "false" : "true");
+    $(b.getAttribute("aria-controls")).hidden = open;
+  });
+  $("q").addEventListener("input", function (e) { state.q = e.target.value; renderRows(); });
+  renderRows();
+
+  // Defects
+  $("defectrows").innerHTML = D.defects.map(function (d) {
+    return '<tr><td class="nm">' + esc(d.name) + "</td><td>" + esc(d.who) + '</td><td class="yr">' + esc(d.yrs) + "</td><td>" + esc(d.remedy) + "</td><td>" + esc(d.status) + "</td><td>" + grade(d.g, d.u) + "</td></tr>";
+  }).join("");
+
+  // Surveys
+  $("surveyintro").innerHTML = D.surveys.intro;
+  $("surveypanels").innerHTML = D.surveys.panels.map(function (p) {
+    var h = '<div class="panel"><h3>' + esc(p.title) + "</h3>";
+    if (p.text) h += "<p>" + p.text + "</p>";
+    if (p.bars) {
+      var max = Math.max.apply(null, p.bars.map(function (b) { return b.v; }));
+      h += '<div class="bars" role="img" aria-label="' + esc(p.title) + '">' + p.bars.map(function (b) {
+        return '<div class="bar"><span>' + esc(b.k) + '</span><span class="track"><span class="fill' + (b.hi ? " hi" : "") + '" style="width:' + (b.v / max * 100).toFixed(1) + '%; display:block"></span></span><span class="v num">' + esc(b.label || b.v) + "</span></div>";
+      }).join("") + "</div>";
+    }
+    if (p.list) h += "<" + (p.ordered ? "ol" : "ul") + ">" + p.list.map(function (x) { return "<li>" + claim(x) + "</li>"; }).join("") + "</" + (p.ordered ? "ol" : "ul") + ">";
+    if (p.note) h += '<p class="note">' + claim(p.note) + "</p>";
+    return h + "</div>";
+  }).join("");
+
+  // Checklist
+  $("checkgrid").innerHTML = D.checklist.map(function (c) {
+    return '<div class="panel"><h3>' + esc(c.title) + '</h3><ul class="checks">' + c.items.map(function (i) { return "<li>" + claim(i) + "</li>"; }).join("") + "</ul></div>";
+  }).join("");
+
+  // Method
+  $("methodintro").innerHTML = D.method.intro;
+  $("gradescale").innerHTML = D.method.grades.map(function (g) {
+    return "<div>" + grade(g.g) + "<span>" + esc(g.t) + "</span></div>";
+  }).join("");
+  $("confidence").innerHTML = D.method.confidence.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+  $("contradictions").innerHTML = D.method.contradictions.map(function (c) { return "<li>" + claim(c) + "</li>"; }).join("");
+  $("falsification").innerHTML = D.method.falsification.map(function (c) { return "<li>" + claim(c) + "</li>"; }).join("");
+  $("sources").innerHTML = D.sources.map(function (s) {
+    return '<li><a href="' + esc(s.u) + '" target="_blank" rel="noopener">' + esc(s.t) + "</a>" + grade(s.g) + "</li>";
+  }).join("");
+
+  if (location.hash && /^#d-[\w-]+$/.test(location.hash)) {
+    var btn = document.querySelector('[aria-controls="' + location.hash.slice(1) + '"]');
+    if (btn) btn.click();
+  }
+})();
+</script>
