@@ -23,6 +23,7 @@
   --bad: #b0271f;
   --bad-bg: #fbe4e2;
   --focus: #1c7fa0;
+  --chart: #0b6e99;
   --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
   --body: "Public Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
@@ -48,6 +49,7 @@
     --bad: #f28a82;
     --bad-bg: #3a1a17;
     --focus: #7fcde3;
+    --chart: #2f9fd6;
   }
 }
 :root[data-theme="dark"] {
@@ -70,9 +72,11 @@
   --bad: #f28a82;
   --bad-bg: #3a1a17;
   --focus: #7fcde3;
+  --chart: #2f9fd6;
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
@@ -172,7 +176,7 @@ nav.toc a {
 }
 nav.toc a:hover { background: var(--surface-2); color: var(--ink); }
 
-section.block { padding-block: 48px 8px; }
+section.block { padding-block: 48px 8px; scroll-margin-top: 44px; }
 section.block > .wrap { display: grid; gap: 20px; }
 .section-head { display: grid; gap: 8px; max-width: 72ch; }
 .section-head p { color: var(--ink-2); }
@@ -480,18 +484,25 @@ table.defects td.nm { min-width: 190px; }
 }
 .panel p, .panel li { font-size: 0.9rem; }
 .panel ul, .panel ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
-.bars { display: grid; gap: 6px; }
+.bars { display: grid; gap: 5px; }
 .bar {
   display: grid;
-  grid-template-columns: 96px 1fr 40px;
+  grid-template-columns: 112px 1fr 44px;
   gap: 10px;
   align-items: center;
   font-size: 0.84rem;
 }
-.bar .track { height: 12px; background: var(--surface-2); border-radius: 3px; overflow: hidden; }
-.bar .fill { height: 100%; background: var(--accent); border-radius: 3px 0 0 3px; }
-.bar .fill.hi { background: var(--bad); opacity: .8; }
-.bar .v { font-family: var(--mono); font-size: 0.78rem; text-align: right; }
+.bar .bk { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar .track { position: relative; height: 14px; }
+.bar .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--chart); border-radius: 0 4px 4px 0; }
+.bar:hover .fill { filter: brightness(1.15); }
+.bar:hover .bk { color: var(--ink); }
+.bar .ref { position: absolute; top: -3px; bottom: -3px; border-left: 1.5px dashed var(--ink-3); }
+.bar .v { font-family: var(--mono); font-size: 0.78rem; text-align: right; color: var(--ink); }
+.bar.axis { font-size: 0.74rem; }
+.bar.axis .track { height: 16px; }
+.bar.axis .reflabel { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; font-family: var(--mono); color: var(--ink-3); }
+code { font-family: var(--mono); font-size: 0.9em; }
 .note { font-size: 0.82rem; color: var(--ink-3); }
 
 /* ---------- Checklist ---------- */
@@ -695,6 +706,7 @@ footer.foot .wrap { display: grid; gap: 6px; }
           <div id="confidence"></div>
         </div>
       </div>
+      <p class="note" id="notrated"></p>
       <details class="more">
         <summary>Where sources disagreed</summary>
         <div><ul id="contradictions"></ul></div>
@@ -718,7 +730,13 @@ footer.foot .wrap { display: grid; gap: 6px; }
   </div>
 </footer>
 
-<script src="data.js"></script>
+<script src="data/helpers.js"></script>
+<script src="data/core.js"></script>
+<script src="data/sedans-jp-kr.js"></script>
+<script src="data/sedans-dom-eu.js"></script>
+<script src="data/suv-compact.js"></script>
+<script src="data/suv-large.js"></script>
+<script src="data/trucks.js"></script>
 <script>
 (function () {
   var D = window.RC;
@@ -726,7 +744,7 @@ footer.foot .wrap { display: grid; gap: 6px; }
   var VERDICT = {
     top: "Top pick",
     strong: "Strong",
-    mixed: "Mixed: pick years",
+    mixed: "Pick carefully",
     avoid: "Avoid"
   };
   var SEG = { all: "All", sedan: "Sedans", suv: "SUVs", truck: "Trucks" };
@@ -801,7 +819,7 @@ footer.foot .wrap { display: grid; gap: 6px; }
       renderRows();
     });
   }
-  var verOpts = { all: "Any rating", top: "Top pick", strong: "Strong", mixed: "Mixed", avoid: "Avoid" };
+  var verOpts = { all: "Any rating", top: "Top pick", strong: "Strong", mixed: "Pick carefully", avoid: "Avoid" };
   chipRow($("segchips"), SEG, "seg");
   chipRow($("verchips"), verOpts, "ver");
 
@@ -870,10 +888,16 @@ footer.foot .wrap { display: grid; gap: 6px; }
     var h = '<div class="panel"><h3>' + esc(p.title) + "</h3>";
     if (p.text) h += "<p>" + p.text + "</p>";
     if (p.bars) {
-      var max = Math.max.apply(null, p.bars.map(function (b) { return b.v; }));
+      var max = Math.max.apply(null, p.bars.map(function (b) { return b.v; }).concat([p.avg || 0])) * 1.04;
+      var unit = p.unit || "";
+      var fmt = function (v) { return unit ? v.toFixed(1) + unit : String(v); };
+      var refPct = p.avg ? (p.avg / max * 100).toFixed(2) : null;
+      var ref = refPct ? '<span class="ref" style="left:' + refPct + '%"></span>' : "";
       h += '<div class="bars" role="img" aria-label="' + esc(p.title) + '">' + p.bars.map(function (b) {
-        return '<div class="bar"><span>' + esc(b.k) + '</span><span class="track"><span class="fill' + (b.hi ? " hi" : "") + '" style="width:' + (b.v / max * 100).toFixed(1) + '%; display:block"></span></span><span class="v num">' + esc(b.label || b.v) + "</span></div>";
-      }).join("") + "</div>";
+        return '<div class="bar" title="' + esc(b.k + ": " + fmt(b.v)) + '"><span class="bk">' + esc(b.k) + '</span><span class="track"><span class="fill" style="width:' + (b.v / max * 100).toFixed(2) + '%"></span>' + ref + '</span><span class="v num">' + esc(fmt(b.v)) + "</span></div>";
+      }).join("");
+      if (refPct) h += '<div class="bar axis" aria-hidden="true"><span></span><span class="track"><span class="reflabel" style="left:' + refPct + '%">' + esc(p.avgLabel) + "</span></span><span></span></div>";
+      h += "</div>";
     }
     if (p.list) h += "<" + (p.ordered ? "ol" : "ul") + ">" + p.list.map(function (x) { return "<li>" + claim(x) + "</li>"; }).join("") + "</" + (p.ordered ? "ol" : "ul") + ">";
     if (p.note) h += '<p class="note">' + claim(p.note) + "</p>";
@@ -891,6 +915,7 @@ footer.foot .wrap { display: grid; gap: 6px; }
     return "<div>" + grade(g.g) + "<span>" + esc(g.t) + "</span></div>";
   }).join("");
   $("confidence").innerHTML = D.method.confidence.map(function (p) { return "<p>" + p + "</p>"; }).join("");
+  $("notrated").textContent = D.method.notRated || "";
   $("contradictions").innerHTML = D.method.contradictions.map(function (c) { return "<li>" + claim(c) + "</li>"; }).join("");
   $("falsification").innerHTML = D.method.falsification.map(function (c) { return "<li>" + claim(c) + "</li>"; }).join("");
   $("sources").innerHTML = D.sources.map(function (s) {
