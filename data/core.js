@@ -3,7 +3,7 @@
 RC.meta = {
   asof: "September 26, 2026",
   lede: "The most dependable used vehicles from 2015–2025 share a pattern: a long-running, non-turbo engine with a conventional automatic, bought outside its first redesign year. Toyota and Lexus hold most of the top spots, but brand alone is a poor guide. Several of the worst engine problems of the decade hit Toyota, Honda and GM models with excellent reputations.",
-  footnote: "Compiled September 26, 2026 from seven parallel research passes (roughly 800 searches and document reads). The research notes behind every rating, with full source lists, are in the <code>research/</code> folder of the repository."
+  footnote: "Compiled September 26, 2026 from seven parallel research passes (roughly 800 searches and document reads), checked by a separate 107-agent verification run. The research notes behind every rating, with full source lists, are in the <code>research/</code> folder of the repository."
 };
 
 RC.bottom = [
@@ -40,7 +40,7 @@ RC.picks = {
     { name: "Toyota Corolla Cross", spec: "2022–2024 · 2.0L", why: "CR much more reliable in all three years; no powertrain defect found.", g: "A", u: CR("toyota", "corolla-cross", 2023) }
   ]},
   truck: { title: "Trucks", items: [
-    { name: "Toyota Tundra", spec: "2015–2021 · 5.7L V8", why: "CR above average all seven years; four J.D. Power awards; about 30% reach 250k miles.", g: "A", u: CR("toyota", "tundra", 2019) },
+    { name: "Toyota Tundra", spec: "2015–2021 · 5.7L V8", why: "CR above average all seven years; four J.D. Power awards; roughly 25–30% reach 250k miles.", g: "A", u: CR("toyota", "tundra", 2019) },
     { name: "Toyota Tacoma", spec: "2018–2019, 2021–2023 · 3.5L V6 or 2.7L", why: "CR above average; five J.D. Power midsize awards; 25% reach 250k miles.", g: "A", u: CR("toyota", "tacoma", 2022) },
     { name: "Nissan Frontier", spec: "2015–2019 · 4.0L V6; or 2024–2025", why: "Four straight J.D. Power midsize awards and CR above average. Low odds of reaching 250k miles.", g: "A", u: JDP(2021) },
     { name: "Honda Ridgeline", spec: "2020–2021, 2023 · 3.5L V6", why: "CR more reliable; outside the V6 bearing recall and investigation years.", g: "A", u: CR("honda", "ridgeline", 2021) },
@@ -88,7 +88,7 @@ RC.defects = [
   { name: "Hyundai/Kia missing immobilizer", who: "Keyed-ignition Hyundai and Kia", yrs: "2011–2022", remedy: "Free software, ignition protector or steering lock.", status: "$145M settlement payouts paused by a Supreme Court petition.", g: "A", u: "https://www.hyundaitheftsettlement.com/" },
   { name: "Nissan VC-Turbo bearing seizure", who: "Rogue 1.5T, Altima 2.0T, Infiniti QX50/QX55", yrs: "2019–2025", remedy: "25V437, 26V080: reflash, debris check, engine if needed. 10 yr/120k long block.", status: "Active.", g: "A", u: NH("26V080") },
   { name: "Nissan CVT failures", who: "Rogue, Altima, Sentra, Versa, Pathfinder, Murano, Maxima", yrs: "2012–2018", remedy: "Extended to 84 months/84k.", status: "Expired on nearly every car.", g: "A", u: TSB("2023/MC-10246457-0001.pdf") },
-  { name: "Subaru CVT coverage", who: "Legacy, Outback, Forester, Impreza, Crosstrek, WRX, Ascent", yrs: "2010–2020", remedy: "10 yr/100k; 2019–2020 added May 2025.", status: "2017–2020 still active; 2016 expiring.", g: "A", u: TSB("2025/MC-11021247-0001.pdf") },
+  { name: "Subaru CVT coverage", who: "Legacy, Outback, Forester, Impreza, Crosstrek, WRX, Ascent", yrs: "2010–2020", remedy: "10 yr/100k; 2019–2020 added May 2025.", status: "2017–2020 still active; the window for cars already past 100k closed June 30, 2026.", g: "A", u: TSB("2025/MC-11021247-0001.pdf") },
   { name: "Honda 1.5T oil dilution", who: "Civic 1.5T, CR-V 1.5T (not Accord)", yrs: "2016–2018", remedy: "Software plus 6 yr/unlimited-mile parts extension.", status: "Expired.", g: "B", u: "https://www.consumerreports.org/car-recalls-defects/honda-extends-warranty-on-troubled-turbo-engines" },
   { name: "Honda 6-speed torque converter", who: "Pilot, Ridgeline", yrs: "2017–2019", remedy: "TSB 23-078: 8 yr/150k.", status: "Active on later years.", g: "A", u: TSB("2023/MC-10241879-0001.pdf") },
   { name: "Honda rear subframe corrosion", who: "Pilot, Passport, Ridgeline, MDX (salt states)", yrs: "2014–2023", remedy: "26V365: reinforcement kit.", status: "New recall, June 2026.", g: "A", u: "https://static.nhtsa.gov/odi/rcl/2026/RCLRPT-26V365-6590.pdf" },
@@ -96,6 +96,7 @@ RC.defects = [
   { name: "Ford EcoBoost coolant intrusion", who: "Escape, Fusion, MKZ, Edge (1.5, 1.6, 2.0)", yrs: "2013–2019", remedy: "One-time short block (21N12, 7 yr/84k); long block per TSB 22-2229.", status: "Mostly aged out.", g: "A", u: TSB("2022/MC-10213732-0001.pdf") },
   { name: "Ford 2.7/3.0 intake valve fracture", who: "F-150, Bronco, Edge, Explorer, Aviator", yrs: "2021–2022", remedy: "24V635: engine test, replace if failed; 10 yr/150k.", status: "Open recall.", g: "A", u: NH("24V635") },
   { name: "Ford F-150 6-speed sudden downshift", who: "F-150 with 6R80", yrs: "2015–2017", remedy: "26V237 (April 2026): PCM calibration.", status: "1.39M trucks; after NHTSA EA26001.", g: "A", u: "https://static.nhtsa.gov/odi/rcl/2026/RCLRPT-26V237-6816.pdf" },
+  { name: "Ford 10R80 10-speed harsh or delayed shifts", who: "F-150, Expedition, Navigator, Mustang, Ranger", yrs: "2017–2023", remedy: "TSB 23-2123: reflash and relearn, or valve body overhaul.", status: "Bulletin only; no recall or extension. Class action pending.", g: "A", u: TSB("2023/MC-10234596-0002.pdf") },
   { name: "Ford 3.5 EcoBoost cam phasers", who: "F-150, Expedition, Navigator", yrs: "2017–2020", remedy: "Reflash and prorated phaser replacement.", status: "Ended Jan 1, 2023.", g: "A", u: TSB("2021/MC-10189763-0001.pdf") },
   { name: "Ford PowerShift dual-clutch", who: "Focus, Fiesta", yrs: "2011–2016", remedy: "Settlement; 7 yr/100k clutch coverage.", status: "Expired.", g: "B", u: "https://www.cars.com/articles/ford-focus-fiesta-transmission-settlement-what-owners-should-know-420135/" },
   { name: "GM 8-speed shudder", who: "Silverado, Sierra, Tahoe, Yukon, Colorado, Cadillacs", yrs: "2015–2019", remedy: "Fluid exchange (TSB 18-NA-355).", status: "Class certification vacated June 2025.", g: "A", u: TSB("2020/MC-10174266-9999.pdf") },
@@ -125,7 +126,7 @@ RC.surveys = {
     },
     {
       title: "iSeeCars 2025: chance of reaching 250,000 miles",
-      text: "Share of each model projected to reach 250k miles, pooled across all generations. The line marks the 4.8% average. Hybrids are left out.",
+      text: "Share of each model projected to reach 250k miles, pooled across all generations. The line marks the 4.8% average; hybrids are left out. This is the last edition with a complete public table. The September 2026 edition supersedes it (see note).",
       avg: 4.8, avgLabel: "Average 4.8%", unit: "%",
       bars: [
         { k: "Sequoia", v: 39.1 }, { k: "4Runner", v: 32.9 }, { k: "Tundra", v: 30.0 }, { k: "Lexus IS", v: 27.5 },
@@ -133,7 +134,7 @@ RC.surveys = {
         { k: "Pilot", v: 13.1 }, { k: "Silverado 1500", v: 12.9 }, { k: "Suburban", v: 11.8 }, { k: "Civic", v: 10.9 },
         { k: "CR-V", v: 10.6 }, { k: "Camry", v: 9.0 }, { k: "F-150", v: 5.9 }, { k: "Ram 1500", v: 3.5 }, { k: "Corolla", v: 3.2 }
       ],
-      note: { t: "The September 2026 edition raises the Sequoia to 42.3% and the average to 5.4%; only partial tables were published", g: "A", u: "https://www.iseecars.com/longest-lasting-cars-study" }
+      note: { t: "September 2026 edition: Sequoia 42.3%, Lexus LS 38.8%, 4Runner 33.1%, Tundra and Tacoma 28.2% and 25.0% (outlets disagree on which is which), average 5.4%. Only partial tables were published.", g: "B", u: "https://www.roadandtrack.com/news/a73741744/20-longest-lasting-cars-trucks-suvs-2026/" }
     },
     {
       title: "Consumer Reports brand rankings, December 2025",
@@ -205,7 +206,8 @@ RC.method = {
     { t: "iSeeCars 2026 coverage swaps Tacoma and Tundra (28.2% vs 25.0%) between outlets. Unresolved; the complete 2025 table is used.", g: "C" },
     { t: "Ford F-150 2015–2017 downshift: one research pass found no remedy yet under NHTSA EA26001; another found recall 26V237 filed April 14, 2026. The Part 573 recall filing is used.", g: "A", u: "https://static.nhtsa.gov/odi/rcl/2026/RCLRPT-26V237-6816.pdf" },
     { t: "CR's February 2025 avoid list named the 2024 Mazda CX-50 and Buick Encore GX; CR's current pages rate them average and more reliable. Newer data governs; both stay Pick carefully.", g: "C" },
-    { t: "V35A recall total: headlines say 250,000 or 270,000; the three Part 573 filings sum to 272,349.", g: "A", u: NH("24V381") }
+    { t: "V35A recall total: headlines say 250,000 or 270,000; the three Part 573 filings sum to 272,349.", g: "A", u: NH("24V381") },
+    { t: "Ford cam phaser program end date: one reading of the Ford document gave September 1, 2022; the verification run found January 1, 2023, which matches the research passes.", g: "A", u: TSB("2021/MC-10189763-0001.pdf") }
   ],
   falsification: [
     { t: "Toyota Tundra 2015–2021: searched engine and transmission recalls, class actions and extensions. Found none; air-injection pump programs cover only 2007–2013. Kept as a top pick.", g: "A" },
@@ -216,6 +218,8 @@ RC.method = {
     { t: "Honda CR-V 2020–2022: found an oil-dilution class action (allegation) and an A/C seal extension. Kept.", g: "C" },
     { t: "Buick LaCrosse: recalls and service updates only; no class action. Kept.", g: "A" },
     { t: "Downgraded after the search: Lexus NX 2.0T (valve-guide bulletin), Honda HR-V (CVT belt program), Lincoln MKZ 2.0T (coolant intrusion), Chrysler 300 (airbag recall), Toyota Highlander 2017–2022 V6 (8-speed whine), Honda Pilot and Ridgeline V6 (bearing investigation), Tundra 2022–2024 (engine recalls).", g: "A" },
+    { t: "Separate verification run (107 agents, each claim voted on by three verifiers): confirmed the three Tundra/LX/GX engine recalls and the June 2026 switch to inspection-first remedies, the Hyundai/Kia 15-year/150k engine settlement, the expired Nissan CVT and Ford cam phaser programs, Subaru's 2019–2020 CVT extension, Ford 10-speed bulletin 23-2123, J.D. Power's 2026 winners and CR's used top picks. It voted down the 2025 iSeeCars figures only because the September 2026 edition replaced them, not because they were wrong.", g: "A" },
+    { t: "The verification run found the same GM 6.2L investigation figures (997,743 vehicles, 499 failures after the fix, 6,953 GM-reported complaints) in trade coverage, but did not carry those claims or the Honda 1.5T and GM lifter items through its vote. Those rest on the NHTSA and Consumer Reports documents cited in each model entry.", g: "B", u: "https://truckdaily.com/features/nhtsa-ea26005-gm-62-l87/" },
     { t: "Checked and refuted: “2019 RAV4 fuel tank” is a Hybrid issue; the Tacoma axle recall is 2022–2023, not 2024+; no Gladiator frame-weld recall exists; the 2023+ Sequoia is not in the V6 engine recalls; the Buick Verano is not in GM's oil-consumption program.", g: "A" }
   ]
 };

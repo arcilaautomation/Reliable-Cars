@@ -134,6 +134,7 @@ RC.models.push(
     { t: "2018–2020 5.0 oil consumption (more than 1 qt per 3,000 miles); TSB 19-2365 reflash.", g: "A", u: TSB("2019/MC-10169811-0001.pdf") },
     { t: "2015–2017 6-speed can suddenly downshift to 2nd with rear-wheel lockup: recall 26V237 (1.39M trucks, April 2026) after NHTSA EA26001.", g: "A", u: "https://static.nhtsa.gov/odi/rcl/2026/RCLRPT-26V237-6816.pdf" },
     { t: "2021–2022 2.7/3.0 built May–Oct 2021: intake valves can fracture (24V635); Ford extended coverage to 10 yr/150k.", g: "A", u: NH("24V635") },
+    { t: "2017–2020 10-speed harsh or delayed shifts, sometimes with shift-solenoid codes; Ford TSB 23-2123 reflashes or overhauls the valve body. Not a warranty extension.", g: "A", u: TSB("2023/MC-10234596-0002.pdf") },
     { t: "PowerBoost hybrid scored 4/100 with CR in 2022, the least reliable vehicle it rated.", g: "B", u: "https://www.edmunds.com/car-news/is-the-ford-150-hybrid-the-least-reliable-vehicle-you-can-buy.html" }
   ],
   recalls: [
@@ -226,6 +227,7 @@ RC.models.push(
     { id: "26V238", t: "2024–2026: sun-visor wiring fire", g: "A", u: NH("26V238") },
     { id: "19V366", t: "2019: shift cable bracket", g: "A", u: NH("19V366") }
   ],
+  faults: [{ t: "2019–2023 10-speed harsh or delayed shifts; Ford TSB 23-2123.", g: "A", u: TSB("2023/MC-10234596-0002.pdf") }],
   inspect: ["10-speed shift quality from cold", "Check for tunes"]
 },
 {

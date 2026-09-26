@@ -26,6 +26,7 @@ Every model is rated at the level of **model year and engine**, not brand. Every
 5. `05-suv-compact.md`: compact and subcompact SUVs
 6. `06-suv-mid-large.md`: midsize, three-row and full-size SUVs
 7. `07-trucks.md`: midsize, full-size and heavy-duty pickups
+8. `08-verification.md`: a separate deep-research run that re-searched the question and put each claim to a three-verifier vote
 
 Research date: September 26, 2026. Recall status changes often, so run any VIN at [nhtsa.gov/recalls](https://www.nhtsa.gov/recalls) and the manufacturer's site before buying.
 

@@ -70,10 +70,10 @@ RC.models.push(
 },
 {
   id: "toyota-highlander", seg: "suv", cls: "Three-row SUV", name: "Toyota Highlander", v: "strong",
-  buy: "2015–2016 V6 (6-speed); 2021 and 2023–2024; Hybrid 2020–2024",
-  skip: "2017–2022 V6 with a transmission whine; 2020 first year",
+  buy: "V6 2015–2019 (CR's 2018 Top Pick); 2021 and 2023–2024; Hybrid 2020–2024",
+  skip: "2020 first year of the generation; any 2017–2022 V6 with a transmission whine",
   gens: "XU50 2014–2019 (3.5 V6; 8-speed from 2017) · XU70 2020+ (3.5 V6 to 2022, 2.4 turbo 2023+, hybrid)",
-  summary: { t: "CR rates most years more reliable, and the 2020 won J.D. Power's Upper Midsize SUV award. The 8-speed used from 2017 has a narrow whine bulletin and a broader class-action allegation.", g: "A", u: CR("toyota", "highlander", 2021) },
+  summary: { t: "CR rates most years more reliable and names the 2018 its best used three-row SUV under $20,000; the 2020 won J.D. Power's Upper Midsize SUV award. The 8-speed used from 2017 has a narrow whine bulletin and a broader class-action allegation.", g: "A", u: "https://www.consumerreports.org/cars/best-used-cars-10-top-picks-a8027733372/" },
   faults: [
     { t: "8-speed whine or grind; TSB T-SB-0008-21 replaces the transaxle on 2021 units in a serial range.", g: "A", u: TSB("2021/MC-10188917-9999.pdf") },
     { t: "Broader 2017–2022 whine complaints and $7,000–12,000 repair quotes are forum and lawsuit claims only.", g: "C", u: "https://www.classaction.org/media/leboutheller-v-toyota-motor-sales-usa-inc-et-al-complaint.pdf" }
@@ -226,6 +226,7 @@ RC.models.push(
   skip: "2018 (CR much below average, 14 recalls)",
   gens: "2015–2017 (3.5 twin-turbo, 6-speed) · 2018+ (3.5 twin-turbo, 10-speed)",
   summary: { t: "2018–2020 3.5 twin-turbos have cam phasers that rattle on cold start. Ford's prorated replacement program expired in January 2023. CR rates every year sampled below average.", g: "A", u: TSB("2022/MC-10209366-0001.pdf") },
+  faults: [{ t: "2018–2021 10-speed harsh or delayed shifts; Ford TSB 23-2123 reflashes or overhauls the valve body (no extended coverage).", g: "A", u: TSB("2023/MC-10234596-0002.pdf") }],
   evidence: [{ t: "CR: 2016, 2020, 2022, 2024 less; 2018 much less", g: "A", u: CR("ford", "expedition", 2020) }],
   inspect: ["Cold start after 6+ hours: listen for a 2–5 second rattle", "Scan for P164C", "10-speed shift quality"]
 },

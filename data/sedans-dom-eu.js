@@ -135,7 +135,7 @@ RC.models.push(
   gens: "S550 2015–2023 (2.3T, 3.7 V6 to 2017, 5.0 V8; 6R80 auto to 2017, 10R80 from 2018) · S650 2024+",
   summary: { t: "J.D. Power awards for MY2017 and MY2019, CR rates 2019 more reliable, and iSeeCars finds it above average for longevity. The year matters: 2020 is on CR's avoid list.", g: "A", u: CR("ford", "mustang", 2019) },
   faults: [
-    { t: "10R80 ten-speed harsh or delayed shifts (2018+). Ford TSBs and class action McCabe v. Ford.", g: "C", u: "https://www.classaction.org/media/mccabe-v-ford-motor-company.pdf" },
+    { t: "2018–2021 10R80 ten-speed harsh or delayed shifts: Ford TSB 23-2123 reflashes or overhauls the valve body. Class action McCabe v. Ford alleges a wider defect.", g: "A", u: TSB("2023/MC-10234596-0002.pdf") },
     { t: "MT82 manual gear clash and shift-fork breakage; class action El-Rifai v. Ford (2011–2019).", g: "C" },
     { t: "Ford's 5.0 oil-consumption bulletin names the F-150 only, not the Mustang.", g: "A", u: TSB("2019/MC-10169811-0001.pdf") }
   ],
